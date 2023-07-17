@@ -1,4 +1,5 @@
 const carouselContainer = document.querySelector(".carousel-container");
+const thumbEl = document.querySelector(".thumbnails-container");
 
 const btnLeft = document.getElementById("control-left");
 const btnRight = document.getElementById("control-right");
@@ -61,7 +62,26 @@ images.forEach((element, i) => {
     <p class="txt">${element.text}</p>`;
 
     imageContainer.append(descrEl);
+
+    /* creo thumbnails item dinamicamente nel container affianco */
+    
+    const item = document.createElement("div");
+    item.classList.add("thumbnails-item");
+    item.style.flexBasis = `calc(100% / ${images.length})`;
+    item.style.backgroundImage = `url(${element.image})`;
+    thumbEl.append(item);
+    
+    /*position relative impedisce funzionamento */
+
+    /*
+    //creo div in sovrapposizione per fare effetto bordo active
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    item.append(overlay);
+    */
 });
+
+
 
 btnRight.addEventListener("click", function () {
     //recupero tutti i div container delle immagini

@@ -3,19 +3,39 @@
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .title {
     text-align: center;
     margin-top: 15px;
 }
+
+.container {
+    max-width: 1100px;
+    margin: 45px auto;
+    aspect-ratio: 20 / 9;
+    display: flex;
+}
+
 .carousel-container {
     max-width: 800px;
-    margin: 45px auto;
     border: 1px solid black;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 20 / 9;
     position: relative;
+}
+
+.thumbnails-container {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.thumbnails-item {
+    background-size: cover;
+    background-position: center;
 }
 .image-container {
     width: 100%;
@@ -26,6 +46,7 @@ body {
     opacity: 0;
     transition: opacity 0.7s;
 }
+
 .image-container.active {
     opacity: 1;
 }
@@ -35,21 +56,34 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
 .btn-container {
     position: absolute;
-    top: 50%;
-    left: -50px;
-    right: -50px;
+    top: 20px;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%, 0);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
+
 .btn {
-    display: block;
     z-index: 10;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 230, 230);
+    border-radius: 50%;
 }
+
 .btn i {
     cursor: pointer;
 }
+
 .description {
     position: absolute;
     bottom: 0;
@@ -59,8 +93,18 @@ body {
     padding: 20px 20px 20px 35px;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
 .txt {
     margin-top: 10px;
     font-weight: 600;
     font-size: 15px;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 3px solid transparent;
+    z-index: 5;
 }
