@@ -11,7 +11,7 @@ let globalCounter = 0;
 const images = [
     {
         image: 'img/01.webp',
-        title: 'Marvel\'s Spiderman Miles Morale',
+        title: 'Marvel\'s Spiderman Miles Morales',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, {
         image: 'img/02.webp',
@@ -52,6 +52,15 @@ images.forEach((element, i) => {
     imgCarousel.classList.add("carousel-image");
     imgCarousel.src = url;
     imageContainer.append(imgCarousel); //inserisco immagine dentro image container
+
+    //creo dinamicamente div contenente descrizione
+    const descrEl = document.createElement("div");
+    descrEl.classList.add("description");
+
+    descrEl.innerHTML = `<h2>${element.title}</h2>
+    <p class="txt">${element.text}</p>`;
+
+    imageContainer.append(descrEl);
 });
 
 btnRight.addEventListener("click", function () {
