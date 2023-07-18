@@ -76,6 +76,9 @@ images.forEach((element, i) => {
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
     item.append(overlay);
+    if (i === 0) {
+        overlay.classList.add("overlay-active");
+    }
 });
 
 
@@ -84,9 +87,15 @@ btnRight.addEventListener("click", function () {
     //recupero tutti i div container delle immagini
     let arrNode = document.querySelectorAll(".image-container");
 
+    //recupero el con bordo colorato
+    let thumbArr = document.querySelectorAll(".overlay");
+
     //accedo all'elemento che ha classe active
     const activeEl = arrNode[globalCounter];
     activeEl.classList.remove("active"); //rimuovo la classe
+
+    const activeThumb = thumbArr[globalCounter];
+    activeThumb.classList.remove("overlay-active");
 
     if (globalCounter === arrNode.length - 1) {
         globalCounter = 0;
@@ -98,15 +107,23 @@ btnRight.addEventListener("click", function () {
     //recupero elemento successivo e aggiungo classe active
     let nextEl = arrNode[globalCounter];
     nextEl.classList.add("active");
+
+    let nextThumb = thumbArr[globalCounter];
+    nextThumb.classList.add("overlay-active");
 });
 
 btnLeft.addEventListener("click", function () {
     //recupero tutti i div container delle immagini
     let arrNode = document.querySelectorAll(".image-container");
 
+    let thumbArr = document.querySelectorAll(".overlay");
+
     //accedo all'elemento che ha classe active
     const activeEl = arrNode[globalCounter];
     activeEl.classList.remove("active"); //rimuovo la classe
+
+    const activeThumb = thumbArr[globalCounter];
+    activeThumb.classList.remove("overlay-active");
 
     if (globalCounter === 0) {
         globalCounter = arrNode.length - 1;
@@ -117,4 +134,7 @@ btnLeft.addEventListener("click", function () {
 
     let nextEl = arrNode[globalCounter];
     nextEl.classList.add("active");
+
+    let nextThumb = thumbArr[globalCounter];
+    nextThumb.classList.add("overlay-active");
 });
