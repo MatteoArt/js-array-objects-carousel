@@ -70,15 +70,12 @@ images.forEach((element, i) => {
     item.style.flexBasis = `calc(100% / ${images.length})`;
     item.style.backgroundImage = `url(${element.image})`;
     thumbEl.append(item);
-    
-    /*position relative impedisce funzionamento */
 
-    /*
+
     //creo div in sovrapposizione per fare effetto bordo active
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
     item.append(overlay);
-    */
 });
 
 
