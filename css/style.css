@@ -111,3 +111,7 @@ body {
     border: 5px solid transparent;
     z-index: -50;
 }
+/* classe che dà effetto active ai thumbnails */
+.overlay-active {
+    border-color: lightgoldenrodyellow;
+}
