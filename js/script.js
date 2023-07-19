@@ -25,7 +25,7 @@ const images = [
     }, {
         image: 'img/04.webp',
         title: 'Stray',
-        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city.',
     }, {
         image: 'img/05.webp',
         title: "Marvel's Avengers",
