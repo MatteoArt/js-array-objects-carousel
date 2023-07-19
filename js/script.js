@@ -79,9 +79,21 @@ images.forEach((element, i) => {
     if (i === 0) {
         overlay.classList.add("overlay-active");
     }
+
+    let overArr = document.querySelectorAll(".overlay");
+    let imgCont = document.querySelectorAll(".image-container");
+
+    item.addEventListener("click", function () {
+        const overActive = document.querySelector(".overlay-active");
+        overActive.classList.remove("overlay-active");
+        overArr[i].classList.add("overlay-active");
+        globalCounter = i;
+
+        let imgActive = document.querySelector(".image-container.active");
+        imgActive.classList.remove("active");
+        imgCont[i].classList.add("active");
+    })
 });
-
-
 
 btnRight.addEventListener("click", function () {
     //recupero tutti i div container delle immagini

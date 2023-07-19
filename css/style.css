@@ -29,14 +29,12 @@ body {
 
 .thumbnails-container {
     flex-grow: 1;
-    position: relative;
     display: flex;
     flex-direction: column;
 }
 .thumbnails-item {
     background-size: cover;
     background-position: center;
-    z-index: -100;
     position: relative;
 }
 .image-container {
@@ -60,18 +58,15 @@ body {
 }
 
 .btn-container {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    bottom: 20px;
-    transform: translate(-50%, 0);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 10px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(228, 226, 226);
 }
 
 .btn {
-    z-index: 1000;
     cursor: pointer;
     width: 35px;
     height: 35px;
@@ -109,7 +104,6 @@ body {
     bottom: 0;
     left: 0;
     border: 5px solid transparent;
-    z-index: -50;
 }
 /* classe che dà effetto active ai thumbnails */
 .overlay-active {
