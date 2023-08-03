@@ -150,3 +150,32 @@ btnLeft.addEventListener("click", function () {
     let nextThumb = thumbArr[globalCounter];
     nextThumb.classList.add("overlay-active");
 });
+
+const autoSlider = setInterval(function () {
+    //recupero tutti i div container delle immagini
+    let arrNode = document.querySelectorAll(".image-container");
+
+    //recupero el con bordo colorato
+    let thumbArr = document.querySelectorAll(".overlay");
+
+    //accedo all'elemento che ha classe active
+    const activeEl = arrNode[globalCounter];
+    activeEl.classList.remove("active"); //rimuovo la classe
+
+    const activeThumb = thumbArr[globalCounter];
+    activeThumb.classList.remove("overlay-active");
+
+    if (globalCounter === arrNode.length - 1) {
+        globalCounter = 0;
+    } else {
+        //incremento di 1 il contatore globale
+        globalCounter++;
+    }
+
+    //recupero elemento successivo e aggiungo classe active
+    let nextEl = arrNode[globalCounter];
+    nextEl.classList.add("active");
+
+    let nextThumb = thumbArr[globalCounter];
+    nextThumb.classList.add("overlay-active");
+},3000);
