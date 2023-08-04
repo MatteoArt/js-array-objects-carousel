@@ -4,9 +4,15 @@ const thumbEl = document.querySelector(".thumbnails-container");
 const btnLeft = document.getElementById("control-left");
 const btnRight = document.getElementById("control-right");
 
+//recupero icone start, stop e reverse
+const startEl = document.getElementById("start");
+const stopEl = document.getElementById("stop");
+const revEl = document.getElementById("reverse");
+
 //imposto un contatore globale con l'indice dell'immagine al momento
 //visibile
 let globalCounter = 0;
+let autoSlider = undefined;
 
 //array di oggetti con dati immagini carosello
 const images = [
@@ -151,7 +157,31 @@ btnLeft.addEventListener("click", function () {
     nextThumb.classList.add("overlay-active");
 });
 
-const autoSlider = setInterval(function () {
+autoSlider = setInterval(autoPlay,3000);
+
+stopEl.addEventListener("click", function () {
+    clearInterval(autoSlider);
+});
+
+startEl.addEventListener("click", function () {
+    //se ci sta già un timer attivo lo fermo
+    if (autoSlider !== undefined) {
+        clearInterval(autoSlider);
+    }
+
+    //faccio partire il timer
+    autoSlider = setInterval(autoPlay,3000);
+});
+
+revEl.addEventListener("click", function () {
+    if (autoSlider !== undefined) {
+        clearInterval(autoSlider);
+    }
+
+    autoSlider = setInterval(reversePlay,3000);
+});
+
+function autoPlay() {
     //recupero tutti i div container delle immagini
     let arrNode = document.querySelectorAll(".image-container");
 
@@ -178,4 +208,30 @@ const autoSlider = setInterval(function () {
 
     let nextThumb = thumbArr[globalCounter];
     nextThumb.classList.add("overlay-active");
-},3000);
+}
+
+function reversePlay() {
+    //recupero tutti i div container delle immagini
+    let arrNode = document.querySelectorAll(".image-container");
+
+    let thumbArr = document.querySelectorAll(".overlay");
+
+    //accedo all'elemento che ha classe active
+    const activeEl = arrNode[globalCounter];
+    activeEl.classList.remove("active"); //rimuovo la classe
+
+    const activeThumb = thumbArr[globalCounter];
+    activeThumb.classList.remove("overlay-active");
+
+    if (globalCounter === 0) {
+        globalCounter = arrNode.length - 1;
+    } else {
+        globalCounter--;
+    }
+
+    let nextEl = arrNode[globalCounter];
+    nextEl.classList.add("active");
+
+    let nextThumb = thumbArr[globalCounter];
+    nextThumb.classList.add("overlay-active");
+}
